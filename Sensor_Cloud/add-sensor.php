@@ -15,7 +15,8 @@
    if(!isset($_SESSION['login_user'])){
       header("location:login.php");
    }
-
+	$cluster_query = "select id, name from clusters where user_id='$user_id'";
+	$cluster_list = mysqli_query($db,$cluster_query);
    if($_SERVER["REQUEST_METHOD"] == "POST") {
       // username and password sent from form 
       
@@ -23,11 +24,13 @@
       $latitude = mysqli_real_escape_string($db,$_POST['latitude']); 
       $longitude = mysqli_real_escape_string($db,$_POST['longitude']); 
       $type = mysqli_real_escape_string($db,$_POST['type']); 
-
+	
       date_default_timezone_set("America/Los_Angeles");
       $currentDate = date("Y-m-d H:i:s");
-      
-      $sql = "INSERT INTO `SENSOR_LIST` ( `OWNER`, `SENSOR_ID`, `TYPE`, `LATITUDE`, `LONGITUDE`, `STATUS`) VALUES ( '$user_id','$name', '$type', '$latitude', '$longitude', 'Active')";
+	  $cluster_form = $_POST['cluster'];
+	  $indexofh = strpos($cluster_form,' -');
+      $cluster_for_db = substr($cluster_form,0,$indexofh);
+      $sql = "INSERT INTO `SENSOR_LIST` ( `OWNER`, `SENSOR_ID`, `TYPE`, `LATITUDE`, `LONGITUDE`, `STATUS`,`CLUSTER_ID`) VALUES ( '$user_id','$name', '$type', '$latitude', '$longitude', 'Active','$cluster_for_db')";
       $result = mysqli_query($db,$sql);
       
       // If result matched $myusername and $mypassword, table row must be 1 row
@@ -256,7 +259,21 @@
                           </select>
                         </div>
                       </div>
-                      
+					  <?php if(!empty($cluster_list)){?>
+					  <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Cluster <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <select class="form-control" name="cluster">
+                            <?php 
+							while($row = $cluster_list->fetch_assoc()){
+							echo '<option>'.$row['id'].' - '.$row['name'].'</option>';
+							}
+							?>
+                          </select>
+                        </div>
+                      </div>
+                      <?php }?>
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">

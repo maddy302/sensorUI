@@ -15,7 +15,7 @@
 
   extract($_POST);
   $locationArray=array(array());
-    $sql = mysqli_query($db ,"Select * from sensors where user_id='$user_id'");
+    $sql = mysqli_query($db ,"Select * from SENSOR_LIST where user_id='$user_id'");
   
   $i=0;
   if(!empty($sql)){
@@ -127,7 +127,7 @@
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
-                <h2>Aditi Shetty</h2>
+                <h2><?php echo $user_name; ?></h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
@@ -186,7 +186,7 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="images/user.png" alt="">Aditi Shetty
+                    <img src="images/user.png" alt=""><?php echo $user_name; ?>
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">

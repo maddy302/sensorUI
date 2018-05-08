@@ -707,7 +707,7 @@
                             </td>
                             <td><?php 
                             if($sensors) {
-                              echo round(getCount("SENSOR_LIST", "type", "salinity")/getCount("SENSOR_LIST", null, null)*100); 
+                              echo round(getCount("SENSOR_LIST", "type", "Salinity")/getCount("SENSOR_LIST", null, null)*100); 
                               } 
                               else {
                                 echo 0;
@@ -1066,19 +1066,21 @@
             ],
             datasets: [{
               data: [<?php echo round(getCount("SENSOR_LIST", "type", "Temperature")/getCount("SENSOR_LIST", null, null)*100) ?>, <?php echo round(getCount("SENSOR_LIST", "type", "Sea Levels")/getCount("SENSOR_LIST", null, null)*100) ?>, <?php echo round(getCount("SENSOR_LIST", "type", "Pressure")/getCount("SENSOR_LIST", null, null)*100) ?>, <?php echo round(getCount("SENSOR_LIST", "type", "Salinity")/getCount("SENSOR_LIST", null, null)*100) ?>, <?php echo round(getCount("SENSOR_LIST", "type", "Conductivity")/getCount("SENSOR_LIST", null, null)*100) ?>],
-              backgroundColor: [
-                "#BDC3C7",
-                "#9B59B6",
-                "#E74C3C",
+               backgroundColor: [
+                "#3498DB",
                 "#26B99A",
-                "#3498DB"
+				"#9B59B6",
+				"#BDC3C7",
+				"#E74C3C"
+                
               ],
               hoverBackgroundColor: [
-                "#CFD4D8",
-                "#B370CF",
-                "#E95E4F",
-                "#36CAAB",
-                "#49A9EA"
+                "#49A9EA",
+				"#36CAAB",
+				"#B370CF",
+				"#CFD4D8",
+				"#E95E4F"
+                
               ]
             }]
           },
