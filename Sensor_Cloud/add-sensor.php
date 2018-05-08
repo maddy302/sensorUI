@@ -27,7 +27,7 @@
       date_default_timezone_set("America/Los_Angeles");
       $currentDate = date("Y-m-d H:i:s");
       
-      $sql = "INSERT INTO `SENSOR_LIST` ( `OWNER`, `SENSOR_ID`, `TYPE`, `LATITUDE`, `LONGITUDE`, `STATUS`) VALUES ( $user_id,'$name', '$type', '$latitude', '$longitude', 'Active')";
+      $sql = "INSERT INTO `SENSOR_LIST` ( `OWNER`, `SENSOR_ID`, `TYPE`, `LATITUDE`, `LONGITUDE`, `STATUS`) VALUES ( '$user_id','$name', '$type', '$latitude', '$longitude', 'Active')";
       $result = mysqli_query($db,$sql);
       
       // If result matched $myusername and $mypassword, table row must be 1 row
@@ -37,7 +37,7 @@
          $row = mysqli_fetch_array($prev_sql,MYSQLI_ASSOC);
          $sensor_id = $row['ID'];
          $sensor_date = $row['TIME_CREATED'];
-         $sql = "INSERT INTO `usage_details` (`id`, `user_id`, `sensor_id`, `update_time`) VALUES (NULL, $user_id, '$sensor_id', '$sensor_date')";
+         $sql = "INSERT INTO `usage_details` ( `user_id`, `sensor_id`, `update_time`) VALUES ( $user_id, '$sensor_id', '$sensor_date')";
          $result = mysqli_query($db,$sql);
       } else {
          

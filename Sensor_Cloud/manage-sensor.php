@@ -356,7 +356,7 @@
 
                 <div class="row">
                 <?php 
-                  $ses_sql = mysqli_query($db,"select SENSOR_LIST.SENSOR_ID from SENSOR_LIST where SENSOR_LIST.OWNER='$user_id' ORDER BY id DESC");
+                  $ses_sql = mysqli_query($db,"select SENSOR_LIST.SENSOR_ID,TYPE from SENSOR_LIST where SENSOR_LIST.OWNER='$user_id' ORDER BY id DESC");
                   $i = 0;
 				  if(!empty($ses_sql)){
                   while($row = mysqli_fetch_array($ses_sql,MYSQLI_ASSOC)){
@@ -364,7 +364,7 @@
                             <div class="col-md-12 col-sm-12 col-xs-12">
                               <div class="x_panel">
                                 <div class="x_title">
-                                  <h2>'.$row["SENSOR_ID"].' Data</h2>
+                                  <h2>'.$row["SENSOR_ID"].''." ".''.$row["TYPE"].' Data</h2>
                                   
                                   <div class="clearfix"></div>
                                 </div>
@@ -525,7 +525,7 @@
         <?php 
           date_default_timezone_set("America/Los_Angeles");
               
-            $ses_sql = mysqli_query($db,"select SENSOR_LIST.SENSOR_ID, TYPE, TIME_CREATED from SENSOR_LIST where SENSOR_LIST.OWNER='$user_id' ORDER BY id DESC");
+            $ses_sql = mysqli_query($db,"select SENSOR_LIST.SENSOR_ID, TYPE, TIME_CREATED from SENSOR_LIST where SENSOR_LIST.OWNER='$user_id' ORDER BY ID DESC");
             $i = 0;
             while($row = mysqli_fetch_array($ses_sql,MYSQLI_ASSOC)){
                 echo "Morris.Line({

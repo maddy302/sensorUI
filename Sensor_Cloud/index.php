@@ -29,7 +29,7 @@
    $paused = $row['price'];
    }
 
-   $ses_sql = mysqli_query($db,"select usage_details.used_hours, usage_details.paused_hours from sensors inner join usage_details on sensors.id = usage_details.sensor_id where sensors.user_id='$user_id'");
+   $ses_sql = mysqli_query($db,"select usage_details.used_hours, usage_details.paused_hours from SENSOR_LIST inner join usage_details on SENSOR_LIST.ID = usage_details.sensor_id where SENSOR_LIST.owner='$user_id'");
 
     $subtotal = 0;
     
@@ -42,18 +42,34 @@
 
    function getCount($table, $parameter, $value) {
     global $user_id;
+	if("SENSOR_LIST"==$table){
+		if ($parameter == null) {
+        $sql = mysqli_query($GLOBALS['db'],"select count(*) as count from $table where OWNER='$user_id'");
+      } else {
+        $sql = mysqli_query($GLOBALS['db'],"select count(*) as count from $table where $parameter='$value' AND owner='$user_id'");
+      }
+	}else if("clusters"==$table){
+		if ($parameter == null) {
+        $sql = mysqli_query($GLOBALS['db'],"select count(distinct id) as count from $table where user_id='$user_id' group by  id");
+      } else {
+        $sql = mysqli_query($GLOBALS['db'],"select count(*) as count from $table where $parameter='$value' AND user_id='$user_id'");
+      }
+	}
+	else{
       if ($parameter == null) {
         $sql = mysqli_query($GLOBALS['db'],"select count(*) as count from $table where user_id='$user_id'");
       } else {
         $sql = mysqli_query($GLOBALS['db'],"select count(*) as count from $table where $parameter='$value' AND user_id='$user_id'");
       }
+	}
 	  if(!empty($sql)){
       $row = mysqli_fetch_array($sql,MYSQLI_ASSOC);
       return $row['count'];
 	  }
+	
    }
 
-   if(getCount("sensors", null, null) == 0) {
+   if(getCount("SENSOR_LIST", null, null) == 0) {
       $sensors = false;
    } else {
       $sensors = true;
@@ -200,7 +216,7 @@
               $UsedHours = round($UsedHours, 2);
               
               
-              $sql = mysqli_query($db,"update sensors set status = 'Paused' where id = $id");
+              $sql = mysqli_query($db,"update SENSOR_LIST set status = 'Paused' where id = $id");
               $sql_usage = mysqli_query($db,"update usage_details set update_time = '$currentDate', used_hours = '$UsedHours' where sensor_id = $id");
             
               if(! $sql_usage )
@@ -227,7 +243,7 @@
                 $PausedHours = $PausedHours+($diffSeconds/3600);
                 $PausedHours = round($PausedHours, 2);
                   
-                $sql = mysqli_query($db,"update sensors set status = 'Active' where id = $id");
+                $sql = mysqli_query($db,"update SENSOR_LIST set status = 'Active' where id = $id");
                 $sql_usage = mysqli_query($db,"update usage_details set update_time = '$currentDate', paused_hours = '$PausedHours' where sensor_id = $id");
               
                 if(! $sql_usage )
@@ -242,7 +258,7 @@
                   $currentDate= date("Y-m-d H:i:s");
                   $datetime1 = strtotime($currentDate);
 
-                  $result = mysqli_query($db,"Select * from usage_details inner join sensors on sensors.id = usage_details.sensor_id where sensor_id = $id");
+                  $result = mysqli_query($db,"Select * from usage_details inner join SENSOR_LIST on SENSOR_LIST.id = usage_details.sensor_id where sensor_id = $id");
                   while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)) {
                     $SensorStatus=$row['status'];
                     $StartPauseTime=$row['update_time'];
@@ -264,7 +280,7 @@
                     $q="used_hours='$UsedHours'";
                   }
                     
-                  $sql = mysqli_query($db,"update sensors set status = 'Terminated' where id = $id");
+                  $sql = mysqli_query($db,"update SENSOR_LIST set status = 'Terminated' where id = $id");
                   $sql_usage = mysqli_query($db,"update usage_details set update_time = '$currentDate', $q where sensor_id = $id");
                 
                   if(! $sql_usage )
@@ -515,8 +531,9 @@
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats">
                   <div class="icon"><i class="fa fa-bullseye"></i></div>
-                  <div class="count"><?php echo getCount("sensors", null, null); ?></div>
+                  <div class="count"><?php echo getCount("SENSOR_LIST", null, null); ?></div>
                   <h3>Total Sensors</h3>
+				  
                   <p>Number of sensors subscribed.</p>
                 </div>
               </div>
@@ -567,13 +584,13 @@
                     </div>
                     <div class="w_center w_55">
                       <div class="progress">
-                        <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo getCount("sensors", "status", "active")/getCount("sensors", null, null)*100; ?>%;">
+                        <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo getCount("SENSOR_LIST", "status", "active")/getCount("SENSOR_LIST", null, null)*100; ?>%;">
                           <span class="sr-only">60% Complete</span>
                         </div>
                       </div>
                     </div>
                     <div class="w_right w_20">
-                      <span><?php echo getCount("sensors", "status", "active") ?></span>
+                      <span><?php echo getCount("SENSOR_LIST", "status", "active") ?></span>
                     </div>
                     <div class="clearfix"></div>
                   </div>
@@ -584,13 +601,13 @@
                     </div>
                     <div class="w_center w_55">
                       <div class="progress">
-                        <div class="progress-bar bg-blue" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo getCount("sensors", "status", "paused")/getCount("sensors", null, null)*100; ?>%;">
+                        <div class="progress-bar bg-blue" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo getCount("SENSOR_LIST", "status", "paused")/getCount("SENSOR_LIST", null, null)*100; ?>%;">
                           <span class="sr-only">60% Complete</span>
                         </div>
                       </div>
                     </div>
                     <div class="w_right w_20">
-                      <span><?php echo getCount("sensors", "status", "paused") ?></span>
+                      <span><?php echo getCount("SENSOR_LIST", "status", "paused") ?></span>
                     </div>
                     <div class="clearfix"></div>
                   </div>
@@ -600,13 +617,13 @@
                     </div>
                     <div class="w_center w_55">
                       <div class="progress">
-                        <div class="progress-bar bg-red" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo getCount("sensors", "status", "terminated")/getCount("sensors", null, null)*100; ?>%;">
+                        <div class="progress-bar bg-red" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo getCount("SENSOR_LIST", "status", "terminated")/getCount("SENSOR_LIST", null, null)*100; ?>%;">
                           <span class="sr-only">60% Complete</span>
                         </div>
                       </div>
                     </div>
                     <div class="w_right w_20">
-                      <span><?php echo getCount("sensors", "status", "terminated") ?></span>
+                      <span><?php echo getCount("SENSOR_LIST", "status", "terminated") ?></span>
                     </div>
                     <div class="clearfix"></div>
                   </div>
@@ -651,7 +668,7 @@
                             <td>
                             <?php 
                             if($sensors) {
-                              echo round(getCount("sensors", "type", "Temperature")/getCount("sensors", null, null)*100); 
+                              echo round(getCount("SENSOR_LIST", "type", "Temperature")/getCount("SENSOR_LIST", null, null)*100); 
                               } 
                               else {
                                 echo 0;
@@ -664,7 +681,7 @@
                             </td>
                             <td><?php 
                             if($sensors) {
-                              echo round(getCount("sensors", "type", "Humidity")/getCount("sensors", null, null)*100); 
+                              echo round(getCount("SENSOR_LIST", "type", "Sea Levels")/getCount("SENSOR_LIST", null, null)*100); 
                               } 
                               else {
                                 echo 0;
@@ -677,7 +694,7 @@
                             </td>
                             <td><?php 
                             if($sensors) {
-                              echo round(getCount("sensors", "type", "Speed")/getCount("sensors", null, null)*100); 
+                              echo round(getCount("SENSOR_LIST", "type", "Pressure")/getCount("SENSOR_LIST", null, null)*100); 
                               } 
                               else {
                                 echo 0;
@@ -690,7 +707,7 @@
                             </td>
                             <td><?php 
                             if($sensors) {
-                              echo round(getCount("sensors", "type", "Smoke")/getCount("sensors", null, null)*100); 
+                              echo round(getCount("SENSOR_LIST", "type", "salinity")/getCount("SENSOR_LIST", null, null)*100); 
                               } 
                               else {
                                 echo 0;
@@ -703,7 +720,7 @@
                             </td>
                             <td><?php 
                             if($sensors) {
-                              echo round(getCount("sensors", "type", "Pressure")/getCount("sensors", null, null)*100); 
+                              echo round(getCount("SENSOR_LIST", "type", "conductivity")/getCount("SENSOR_LIST", null, null)*100); 
                               } 
                               else {
                                 echo 0;
@@ -816,16 +833,16 @@
                          
                          date_default_timezone_set('America/Los_Angeles');
                          
-                         $ses_sql = mysqli_query($db,"select sensors.latitude, sensors.longitude, sensors.id, sensors.name, sensors.type, sensors.location, sensors.status, sensors.date, usage_details.used_hours, usage_details.paused_hours, usage_details.update_time from sensors inner join usage_details on sensors.id = usage_details.sensor_id where sensors.user_id='$user_id'");
+                         $ses_sql = mysqli_query($db,"select SENSOR_LIST.latitude, SENSOR_LIST.longitude, SENSOR_LIST.id, SENSOR_LIST.sensor_id, SENSOR_LIST.type, SENSOR_LIST.ip_address, SENSOR_LIST.status, SENSOR_LIST.time_created, usage_details.used_hours, usage_details.paused_hours, usage_details.update_time from SENSOR_LIST inner join usage_details on SENSOR_LIST.id = usage_details.sensor_id where SENSOR_LIST.owner='$user_id'");
 						if(!empty($ses_sql)){
                          while($row = mysqli_fetch_array($ses_sql,MYSQLI_ASSOC)){
                             
                             echo '<tr>
-                            <td>'.$row["name"].'</td>
+                            <td>'.$row["sensor_id"].'</td>
                             <td>'.$row["type"].'</td>
                             <td>Lat: '.$row["latitude"].' Lon: '.$row["longitude"].'</td>
                             <td>'.$row["status"].'</td>
-                            <td>'.date_format(new DateTime($row["date"]), 'd M Y').'</td>
+                            <td>'.date_format(new DateTime($row["time_created"]), 'd M Y').'</td>
                             <td>'.$row["used_hours"].' hours</td>
                             <td>'.$row["paused_hours"].' hours</td>';
                             
@@ -898,15 +915,21 @@
                         <?php
                          
                          
-                         $ses_sql = mysqli_query($db,"select clusters.id, clusters.sensors, clusters.name, clusters.status, clusters.date, usage_details.used_hours, usage_details.paused_hours, usage_details.update_time from clusters inner join usage_details on clusters.id = usage_details.cluster_id where clusters.user_id=$user_id");
+                         //$ses_sql = mysqli_query($db,"select cls.id, sl.sensor_id, cls.name,  cls.status, cls.time_created, ud.used_hours, ud.paused_hours, ud.update_time from clusters cls, SENSOR_LIST sl, usage_details ud where cls.id = sl.CLUSTER_ID and ud.sensor_id = sl.ID and cls.user_id = $user_id group by cls.id, sl.sensor_id");
+						 $ses_sql = mysqli_query($db,"select cls.id,count(sensor_usage.sensor_id) as sensor_count, sum(sensor_usage.used_hours) as used_hours,sum(sensor_usage.paused_hours) as paused_hours,max(sensor_usage.update_time) as update_time
+								,cls.name,cls.status,cls.time_created
+									from clusters cls,
+														(select sl.id, sl.sensor_id,ud.used_hours,ud.paused_hours,sl.cluster_id,ud.update_time from SENSOR_LIST sl, usage_details ud where 
+									ud.sensor_id = sl.id and ud.user_id='$user_id' ) as sensor_usage 
+									where cls.id=sensor_usage.cluster_id and cls.user_id='$user_id'");
 						if(!empty($ses_sql)){
                          while($row = mysqli_fetch_array($ses_sql,MYSQLI_ASSOC)){
                             
                             echo '<tr>
                             <td>'.$row["name"].'</td>
-                            <td>'.$row["sensors"].'</td>
+                            <td>'.$row["sensor_count"].'</td>
                             <td>'.$row["status"].'</td>
-                            <td>'.date_format(new DateTime($row["date"]), 'd M Y').'</td>
+                            <td>'.date_format(new DateTime($row["time_created"]), 'd M Y').'</td>
                             <td>'.$row["used_hours"].'</td>
                             <td>'.$row["paused_hours"].'</td>';
                             echo '<td>';
@@ -1035,14 +1058,14 @@
           tooltipFillColor: "rgba(51, 51, 51, 0.55)",
           data: {
             labels: [
-              "Smoke",
-              "Speed",
+              "Temperature",
+              "Sea Levels",
               "Pressure",
-              "Humidity",
-              "Temperature"
+              "Salinity",
+              "Conductivity"
             ],
             datasets: [{
-              data: [<?php echo round(getCount("sensors", "type", "Smoke")/getCount("sensors", null, null)*100) ?>, <?php echo round(getCount("sensors", "type", "Speed")/getCount("sensors", null, null)*100) ?>, <?php echo round(getCount("sensors", "type", "Pressure")/getCount("sensors", null, null)*100) ?>, <?php echo round(getCount("sensors", "type", "Humidity")/getCount("sensors", null, null)*100) ?>, <?php echo round(getCount("sensors", "type", "Temperature")/getCount("sensors", null, null)*100) ?>],
+              data: [<?php echo round(getCount("SENSOR_LIST", "type", "Temperature")/getCount("SENSOR_LIST", null, null)*100) ?>, <?php echo round(getCount("SENSOR_LIST", "type", "Sea Levels")/getCount("SENSOR_LIST", null, null)*100) ?>, <?php echo round(getCount("SENSOR_LIST", "type", "Pressure")/getCount("SENSOR_LIST", null, null)*100) ?>, <?php echo round(getCount("SENSOR_LIST", "type", "Salinity")/getCount("SENSOR_LIST", null, null)*100) ?>, <?php echo round(getCount("SENSOR_LIST", "type", "Conductivity")/getCount("SENSOR_LIST", null, null)*100) ?>],
               backgroundColor: [
                 "#BDC3C7",
                 "#9B59B6",

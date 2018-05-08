@@ -54,9 +54,9 @@ sensors
 clusters - id, sensor_id, status,time_created, time_updated
 create table clusters (
 id varchar(10),
-sensor_id varchar(20),
+sensor_id int(12),
 status varchar(10),
-time_created timestamp,
+time_created timestamp default current_timestamp,
 time_updated timestamp on update current_timestamp
 );
 
@@ -73,3 +73,41 @@ alter table usage_details modify used_hours int(11) default 0;
 alter table usage_details modify paused_hours int(11) default 0;
 
 ALTER TABLE SENSOR_LIST MODIFY STATUS VARCHAR(20);
+
+
+insert into billing_model (id, plan, sensor_id,cluster_id,price,state) values (3,'Blaze','4801910','1',0.25,'CA');
+insert into billing_model (id, plan, sensor_id,cluster_id,price,state) values (5,'Blaze','4801948','1',0.25,'CA');
+insert into billing_model (id, plan, sensor_id,cluster_id,price,state) values (6,'Blaze','4801948','1',0.25,'CA');
+insert into billing_model (id, plan, sensor_id,cluster_id,price,state) values (7,'Blaze','Trail London','1',0.25,'LND');
+
+alter table clusters add user_id varchar(10) ;
+alter table clusters add name varchar(10);
+insert into clusters (id, sensor_id,status,time_created,time_updated,user_id) values (1,3,'Active',current_timestamp,current_timestamp,'1');
+insert into clusters (id, sensor_id,status,time_created,time_updated,user_id) values (1,5,'Active',current_timestamp,current_timestamp,'1');
+insert into clusters (id, sensor_id,status,time_created,time_updated,user_id) values (1,6,'Active',current_timestamp,current_timestamp,'1');
+insert into clusters (id, sensor_id,status,time_created,time_updated,user_id) values (1,7,'Active',current_timestamp,current_timestamp,'1');
+
+alter table usage_details add cluster_id varchar(10) default 1;
+ALTER TABLE SENSOR_LIST ADD CLUSTER_ID VARCHAR(10) DEFAULT 1;
+alter table clusters drop column sensor_id;
+
+
+select cls.id, count(sl.sensor_id), cls.name,  cls.status, cls.time_created, sum(ud.used_hours), sum(ud.paused_hours), cls.time_updated from clusters cls, SENSOR_LIST sl, usage_details ud where cls.id = sl.CLUSTER_ID and ud.sensor_id = sl.ID and cls.user_id = '1' group by cls.id, sl.sensor_id;
+
+select cls.id, sl.sensor_id,sl.id, cls.name , cls.status, cls.time_created, cls.time_updated from clusters cls, SENSOR_LIST sl where
+sl.cluster_id = cls.id and cls.user_id='1' GROUP BY cls.id, sl.id
+
+select sl.id, sl.sensor_id,ud.used_hours,ud.paused_hours from SENSOR_LIST sl, usage_details ud where 
+ud.sensor_id = sl.id and ud.user_id='1'
+
+select cls.id,count(sensor_usage.sensor_id) as sensor_count, sum(sensor_usage.used_hours) as used_hours,sum(sensor_usage.paused_hours) as paused_hours,max(sensor_usage.update_time) as update_time
+,cls.name,cls.status,cls.time_created
+ from clusters cls,
+(select sl.id, sl.sensor_id,ud.used_hours,ud.paused_hours,sl.cluster_id,ud.update_time from SENSOR_LIST sl, usage_details ud where 
+ud.sensor_id = sl.id and ud.user_id='1' ) as sensor_usage where cls.id=sensor_usage.cluster_id and cls.user_id='1'
+
+select cls.id,count(sensor_usage.sensor_id) as sensor_count, sum(sensor_usage.used_hours) as used_hours,sum(sensor_usage.paused_hours) as paused_hours,max(sensor_usage.update_time) as update_time
+,cls.name,cls.status,cls.time_created
+ from clusters cls,
+(select sl.id, sl.sensor_id,ud.used_hours,ud.paused_hours,sl.cluster_id,ud.update_time from SENSOR_LIST sl, usage_details ud where 
+ud.sensor_id = sl.id and ud.user_id='$user_id' ) as sensor_usage where cls.id=sensor_usage.cluster_id and cls.user_id='$user_id'
