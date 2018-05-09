@@ -408,23 +408,23 @@
                   </li>
                   <li><a><i class="fa fa-edit"></i> Manage Users <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="">View Users</a></li>
-                      <li><a href="">Edit Users</a></li>
-                      <li><a href="">Delete Users</a></li>
+                      <li><a href="#user_list">View Users</a></li>
+                      <li><a href="#user_list">Edit Users</a></li>
+                      <li><a href="#user_list">Delete Users</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-desktop"></i> Manage Sensors <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="">View Sensors</a></li>
-                      <li><a href="">Edit Sensors</a></li>
-                      <li><a href="">Delete Sensors</a></li>
+                      <li><a href="#sensor_list">View Sensors</a></li>
+                      <li><a href="#sensor_list">Edit Sensors</a></li>
+                      <li><a href="#sensor_list">Delete Sensors</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-table"></i> Manage Clusters <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="">View Clusters</a></li>
-                      <li><a href="">Edit Clusters</a></li>
-                      <li><a href="">Delete Clusters</a></li>
+                      <li><a href="#cluster_list">View Clusters</a></li>
+                      <li><a href="#cluster_list">Edit Clusters</a></li>
+                      <li><a href="#cluster_list">Delete Clusters</a></li>
                     </ul>
                   </li>
                   </ul>
@@ -758,7 +758,7 @@
             </div>
 
 
-            <div class="row">
+            <div class="row" id="user_list">
                <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
@@ -817,7 +817,7 @@
               </div>
               </div>
 
-            <div class="row">
+            <div class="row" id="sensor_list">
                <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
@@ -900,7 +900,7 @@
               </div>
               </div>
 
-              <div class="row">
+              <div class="row" id="cluster_list">
                <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">

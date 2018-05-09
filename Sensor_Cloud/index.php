@@ -455,6 +455,7 @@
                       <li><a href="add-sensor.php">Add Sensors</a></li>
                       <li><a href="manage-sensor.php">Manage Sensors</a></li>
                       <li><a href="virtualization.php">Sensor Virtualization</a></li>
+					   <li><a href="visualization.php">Sensor Visualization</a></li>
                     </ul>
                   </li>
                   <!--<li><a><i class="fa fa-table"></i> Manage Clusters <span class="fa fa-chevron-down"></span></a>
@@ -894,7 +895,7 @@
                     
                     <div class="clearfix"></div>
                   </div>
-                  <div class="x_content">
+                  <div class="x_content" id="cluster_details">
                     <p class="text-muted font-13 m-b-30">
                       
                     </p>

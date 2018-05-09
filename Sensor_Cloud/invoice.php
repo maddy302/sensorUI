@@ -93,6 +93,7 @@
                       <li><a href="add-sensor.php">Add Sensors</a></li>
                       <li><a href="manage-sensor.php">Manage Sensors</a></li>
                       <li><a href="virtualization.php">Sensor Virtualization</a></li>
+					  <li><a href="visualization.php">Sensor Visualization</a></li>
                     </ul>
                   </li>
                   </ul>
@@ -238,7 +239,7 @@
                             </thead>
                             <tbody>
                             <?php
-                            $ses_sql = mysqli_query($db,"select sensors.latitude, sensors.longitude, sensors.id, sensors.name, sensors.type, usage_details.used_hours, usage_details.paused_hours from sensors inner join usage_details on sensors.id = usage_details.sensor_id where sensors.user_id='$user_id'");
+                            $ses_sql = mysqli_query($db,"select SENSOR_LIST.latitude, SENSOR_LIST.longitude, SENSOR_LIST.id, SENSOR_LIST.sensor_id, SENSOR_LIST.type, usage_details.used_hours, usage_details.paused_hours from SENSOR_LIST inner join usage_details on SENSOR_LIST.id = usage_details.sensor_id where SENSOR_LIST.owner='$user_id'");
 
                               $i = 1;
                               $subtotal = 0;
@@ -246,7 +247,7 @@
                                   
                                   echo '<tr>
                                           <td>'.$i.'</td>
-                                          <td>'.$row["name"].'</td>
+                                          <td>'.$row["sensor_id"].'</td>
                                           <td>281-011-'.$row["id"].'</td>
                                           <td>'.$row["type"].' Sensor in Lat: '.$row["latitude"].' and Lon: '.$row["longitude"].'.</td>
                                           <td>$'.(($row["used_hours"]*$running) + ($row["paused_hours"]*$paused)).'</td>

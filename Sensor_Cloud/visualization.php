@@ -26,6 +26,8 @@
     $i++;
   }
   }
+  
+  
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,7 +38,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Sensor Cloud! | Virtualization</title>
+    <title>Sensor Cloud! | Visualization</title>
 
     <!-- Bootstrap -->
     <link href="vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -59,57 +61,28 @@
     <link rel="stylesheet" type="text/css" href="css/cssFile.css">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.11&sensor=false&key=AIzaSyAe6jtM83BDhNdL49jySjJ3XA1sODx-WmI" type="text/javascript"></script>
-    <script type="text/javascript">
+	<script type="text/javascript" 
+	    src="https://public.tableau.com/javascripts/api/tableau-2.min.js"></script>
+   <script type="text/javascript">
         // check DOM Ready
-     var locationArray= <?php echo json_encode($locationArray ); ?>;
-     
-        $(document).ready(function() {
-            // execute
-            (function() {
-                // map options
-                var options = {
-                    zoom: 4,
-                    center: new google.maps.LatLng(locationArray[0][0], locationArray[0][1]), // centered US
-                    mapTypeId: google.maps.MapTypeId.ROADMAP,
-                    mapTypeControl: false
+		function initViz1(cont,urlToTableau) {
+            var containerDiv = document.getElementById(cont),
+                url = urlToTableau,
+                options = {
+                    hideTabs: true,
+                    onFirstInteractive: function () {
+                        console.log("Run this code when the viz has finished loading.");
+                    }
                 };
+            
+            var viz = new tableau.Viz(containerDiv, url, options); 
+            // Create a viz object and embed it in the container div.
+        }
 
-                // init map
-                var map = new google.maps.Map(document.getElementById('map_canvas'), options);
-
-                // NY and CA sample Lat / Lng
-                var southWest = new google.maps.LatLng(40.744656, -74.005966);
-                var northEast = new google.maps.LatLng(34.052234, -118.243685);
-                var lngSpan = northEast.lng() - southWest.lng();
-                var latSpan = northEast.lat() - southWest.lat();
-
-                // set multiple marker
-                for (var i = 0; i < locationArray.length; i++) {
-        
-                    // init markers
-                    var marker = new google.maps.Marker({
-                        position: new google.maps.LatLng(locationArray[i][0],locationArray[i][1]),
-                        map: map,
-                        title: locationArray[i][2]
-                    });
-
-                    // process multiple info windows
-                    (function(marker, i) {
-                        // add click event
-                        google.maps.event.addListener(marker, 'click', function() {
-                            infowindow = new google.maps.InfoWindow({
-                                content: "["+locationArray[i][0]+","+locationArray[i][1]+"] "+locationArray[i][2]
-                            });
-                            infowindow.open(map, marker);
-                        });
-                    })(marker, i);
-                }
-            })();
-        });
         </script>
   </head>
 
-  <body class="nav-md">
+  <body class="nav-md" >
     <div class="container body">
       <div class="main_container">
         <div class="col-md-3 left_col">
@@ -148,7 +121,7 @@
                       <li><a href="add-sensor.php">Add Sensors</a></li>
                       <li><a href="manage-sensor.php">Manage Sensors</a></li>
                       <li><a href="virtualization.php">Sensor Virtualization</a></li>
-					  <li><a href="visualization.php">Sensor Visualization</a></li>
+					   <li><a href="visualization.php">Sensor Visualization</a></li>
                     </ul>
                   </li>
                   </ul>
@@ -210,29 +183,31 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Virtualization</h3>
+                <h3>Visualization</h3>
               </div>
-
+<div class="x_content" id="vizContainer" style="width:800px; height:700px;"></div>
+<div class="x_content" id="vizContainer2" style="width:800px; height:700px;"></div>
+<script>initViz1("vizContainer","https://public.tableau.com/views/281-02/Sheet1?:embed=y&:display_count=yes&publish=yes");</script>
+<script>initViz1("vizContainer2","https://public.tableau.com/views/281-01/Sheet1?:embed=y&:display_count=no");</script>
               
             </div>
+			
             <div class="clearfix"></div>
-            <div class="row">
+            <!--<div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
                 
                 <div id="map_canvas"></div>
 
               </div>
-            </div>
+            </div>-->
+
                 </div>
+				
+				
 
 
               </div>
-            </div>
-          </div>
-        </div>
-        <!-- /page content -->
-      </div>
-    </div>
+
 
     <!-- jQuery -->
     <script src="vendors/jquery/dist/jquery.min.js"></script>
