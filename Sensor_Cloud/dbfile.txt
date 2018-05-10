@@ -111,3 +111,6 @@ select cls.id,count(sensor_usage.sensor_id) as sensor_count, sum(sensor_usage.us
  from clusters cls,
 (select sl.id, sl.sensor_id,ud.used_hours,ud.paused_hours,sl.cluster_id,ud.update_time from SENSOR_LIST sl, usage_details ud where 
 ud.sensor_id = sl.id and ud.user_id='$user_id' ) as sensor_usage where cls.id=sensor_usage.cluster_id and cls.user_id='$user_id'
+
+alter table clusters add primary key(id)
+alter table clusters modify column id int(11) auto_increment

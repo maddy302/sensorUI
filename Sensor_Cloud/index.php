@@ -454,7 +454,8 @@
                     <ul class="nav child_menu">
                       <li><a href="add-sensor.php">Add Sensors</a></li>
                       <li><a href="manage-sensor.php">Manage Sensors</a></li>
-                      <li><a href="virtualization.php">Sensor Virtualization</a></li>
+                    <!--  <li><a href="virtualization.php">Sensor Virtualization</a></li>-->
+					<li><a href="add-cluster.php">Add Cluster</a></li>
 					   <li><a href="visualization.php">Sensor Visualization</a></li>
                     </ul>
                   </li>
