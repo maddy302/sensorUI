@@ -114,3 +114,5 @@ ud.sensor_id = sl.id and ud.user_id='$user_id' ) as sensor_usage where cls.id=se
 
 alter table clusters add primary key(id)
 alter table clusters modify column id int(11) auto_increment
+
+alter table billing_model modify column price decimal (8,4);

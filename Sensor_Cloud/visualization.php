@@ -38,7 +38,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Sensor Cloud! | Visualization</title>
+    <title>Sensor Cloud! | Analytics</title>
 
     <!-- Bootstrap -->
     <link href="vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -81,7 +81,16 @@
             
             var viz = new tableau.Viz(containerDiv, url, options); 
             // Create a viz object and embed it in the container div.
+            if(cont=="vizContainer3") 
+            filterSingleValue();
         }
+
+        function filterSingleValue() {
+      activeSheet.applyFilterAsync(
+      "Wmo Id",
+      "4801910",
+    tableau.FilterUpdateType.REPLACE);
+}    
 
         </script>
   </head>
@@ -126,7 +135,7 @@
                       <li><a href="manage-sensor.php">Manage Sensors</a></li>
                       <!--<li><a href="virtualization.php">Sensor Virtualization</a></li>-->
 					  <li><a href="add-cluster.php">Add Cluster</a></li>
-					   <li><a href="visualization.php">Sensor Visualization</a></li>
+					   <li><a href="visualization.php">Sensor Data Analytics</a></li>
                     </ul>
                   </li>
                   </ul>
@@ -188,13 +197,24 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Visualization</h3>
+                <h3>Sensor Data Analytics</h3>
               </div>
 <div class="x_content" id="vizContainer" style="width:800px; height:700px;"></div>
 <div class="x_content" id="vizContainer2" style="width:800px; height:700px;"></div>
+<div class="x_content" id="vizContainer3" style="width:800px; height:700px;"></div>
+<div class="x_content" id="vizContainer4" style="width:800px; height:700px;"></div>
+<div class="x_content" id="vizContainer5" style="width:800px; height:700px;"></div>
+<div class="x_content" id="vizContainer6" style="width:800px; height:700px;"></div>
+<div class="x_content" id="vizContainer7" style="width:800px; height:700px;"></div>
+
 <script>initViz1("vizContainer","https://public.tableau.com/views/281-02/Sheet1?:embed=y&:display_count=yes&publish=yes");</script>
 <script>initViz1("vizContainer2","https://public.tableau.com/views/281-01/Sheet1?:embed=y&:display_count=no");</script>
-              
+<script>initViz1("vizContainer3","https://public.tableau.com/views/281-05/Sheet1?:embed=y&:display_count=yes&publish=yes");</script>
+<script>initViz1("vizContainer4","https://public.tableau.com/views/281-06/Sheet1?:embed=y&:display_count=yes&publish=yes");</script>
+<script>initViz1("vizContainer5","https://public.tableau.com/views/281-03/Sheet1?:embed=y&:display_count=yes&publish=yes");</script>
+<script>initViz1("vizContainer6","https://public.tableau.com/views/281-04/Sheet1?:embed=y&:display_count=yes&publish=yes");</script>
+<script>initViz1("vizContainer7","https://public.tableau.com/views/281-07/Sheet1?:embed=y&:display_count=yes&publish=yes");</script>
+       
             </div>
 			
             <div class="clearfix"></div>

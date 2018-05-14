@@ -123,7 +123,7 @@
                       <li><a href="add-sensor.php">Add Sensors</a></li>
                       <li><a href="manage-sensor.php">Manage Sensors</a></li>
                       <li><a href="add-cluster.php">Add Cluster</a></li>
-					  <li><a href="visualization.php">Sensor Visualization</a></li>
+					            <li><a href="visualization.php">Sensor Data Analytics</a></li>
                     </ul>
                   </li>
                   </ul>
@@ -258,6 +258,13 @@
                             <option>Salinity</option>
                             <option>Conductivity</option>
                           </select>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12">IP Address <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="latitude" name="latitude" required="required" class="form-control col-md-7 col-xs-12">
                         </div>
                       </div>
 					  <?php if(!empty($cluster_list)){?>

@@ -65,18 +65,17 @@
                         <div class="col-md-4 col-sm-6 col-xs-12">
                           <div class="pricing">
                             <div class="title">
-                              <h2>SPARK</h2>
+                              <h2>Basic</h2>
                               <h1>Free</h1>
-                              <span>Generous limits for hobbyists</span>
+                              <span>Generous limits</span>
                             </div>
                             <div class="x_content">
                               <div class="">
                                 <div class="pricing_features">
                                   <ul class="list-unstyled text-left">
                                     <li><i class="fa fa-check text-success"></i> <strong>Unlimited</strong> sensors</li>
-                                    <li><i class="fa fa-times text-danger"></i> <strong>Limited</strong> clusters (5 Clusters)</li>
+                                    <li><i class="fa fa-times text-danger"></i> <strong>Limited</strong> clusters (5)</li>
                                     <li><i class="fa fa-check text-success"></i> Free <strong> upto 5 clusters</strong></li>
-                                    <li><i class="fa fa-check text-success"></i> <strong>Real-time monitoring</strong></li>
                                     <li><i class="fa fa-times text-danger"></i> Shared <strong> resources</strong></li>
                                     <li><i class="fa fa-times text-danger"></i> <strong>Manual</strong> resource provisioning</li>
                                     <li><i class="fa fa-check text-success"></i> <strong>24/7</strong> support</li>
@@ -103,7 +102,7 @@
                               </div>
                             </div>
                             <div class="title">
-                              <h2>FLAME</h2>
+                              <h2>Semi</h2>
                               <h1>$25 per month</h1>
                               <span>Predictable pricing for growing apps</span>
                             </div>
@@ -136,7 +135,7 @@
                         <div class="col-md-4 col-sm-6 col-xs-12">
                           <div class="pricing">
                             <div class="title">
-                              <h2>BLAZE</h2>
+                              <h2>Premium</h2>
                               <h1>Pay as you go</h1>
                               <span>Commodity pricing for apps at scale</span>
                             </div>
@@ -149,7 +148,7 @@
                                     <li><i class="fa fa-check text-success"></i> $1.50 <strong> per hour</strong></li>
                                     <li><i class="fa fa-check text-success"></i> <strong>Real-time monitoring</strong></li>
                                     <li><i class="fa fa-check text-success"></i> Dedicated <strong> resources</strong></li>
-                                    <li><i class="fa fa-check text-success"></i> <strong>Automatic</strong> resource provisioning</li>
+                                    <li><i class="fa fa-check text-success"></i> <strong>Manual</strong> resource provisioning</li>
                                     <li><i class="fa fa-check text-success"></i> <strong>24/7</strong> support</li>
                                   </ul>
                                 </div>

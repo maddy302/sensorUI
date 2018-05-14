@@ -148,7 +148,7 @@
                       <li><a href="add-sensor.php">Add Sensors</a></li>
                       <li><a href="manage-sensor.php">Manage Sensors</a></li>
                       <li><a href="virtualization.php">Sensor Virtualization</a></li>
-					  <li><a href="visualization.php">Sensor Visualization</a></li>
+					  <li><a href="visualization.php">Sensor Data Analytics</a></li>
                     </ul>
                   </li>
                   </ul>
