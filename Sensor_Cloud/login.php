@@ -59,7 +59,7 @@
     <!-- Custom Theme Style -->
     <link href="build/css/custom.min.css" rel="stylesheet">
   </head>
-<style>.login {background-color:#87cefa;}</style>
+
   <body class="login">
     <div>
       <a class="hiddenanchor" id="signin"></a>
