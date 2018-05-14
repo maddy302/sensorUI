@@ -198,22 +198,7 @@
             </div>
             <!-- /sidebar menu -->
 
-            <!-- /menu footer buttons -->
-            <div class="sidebar-footer hidden-small">
-              <a data-toggle="tooltip" data-placement="top" title="Settings">
-                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-              </a>
-              <a data-toggle="tooltip" data-placement="top" title="FullScreen">
-                <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
-              </a>
-              <a data-toggle="tooltip" data-placement="top" title="Lock">
-                <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
-              </a>
-              <a data-toggle="tooltip" data-placement="top" title="Logout">
-                <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
-              </a>
-            </div>
-            <!-- /menu footer buttons -->
+           
           </div>
         </div>
 
@@ -316,21 +301,21 @@
                             if ($row['STATUS'] != "Terminated") {
                               echo '<form method="post" action="">';
                             if ($row["STATUS"] == "Active") {
-                              echo '<input type="submit" name="action" class="btn btn-round btn-xs btn-success" value="Start" disabled/ >
-                              <input type="submit" name="action" class="btn btn-round btn-xs btn-primary" value="Pause" / >
-                              <input type="submit" name="action" class="btn btn-round btn-xs btn-danger" value="Stop" / >
+                              echo '<input type="submit" name="action" class="btn btn-default btn-xs btn-success" value="Start" disabled/ >
+                              <input type="submit" name="action" class="btn btn-default btn-xs btn-primary" value="Pause" / >
+                              <input type="submit" name="action" class="btn btn-default btn-xs btn-danger" value="Stop" / >
                               <input type="hidden" name="id" value="'.$row["ID"].'" />';
                             }
                             if ($row["STATUS"] == "Paused") {
-                              echo '<input type="submit" name="action" class="btn btn-round btn-xs btn-success" value="Start" / >
-                              <input type="submit" name="action" class="btn btn-round btn-xs btn-primary" value="Pause" disabled/ >
-                              <input type="submit" name="action" class="btn btn-round btn-xs btn-danger" value="Stop" / >
+                              echo '<input type="submit" name="action" class="btn btn-default btn-xs btn-success" value="Start" / >
+                              <input type="submit" name="action" class="btn btn-default btn-xs btn-primary" value="Pause" disabled/ >
+                              <input type="submit" name="action" class="btn btn-default btn-xs btn-danger" value="Stop" / >
                               <input type="hidden" name="id" value="'.$row["ID"].'" />';
                             }
                             if ($row["STATUS"] == "Terminated") {
-                              echo '<input type="submit" name="action" class="btn btn-round btn-xs btn-success" value="Start" / >
-                              <input type="submit" name="action" class="btn btn-round btn-xs btn-primary" value="Pause" / >
-                              <input type="submit" name="action" class="btn btn-round btn-xs btn-danger" value="Stop" disabled/ >
+                              echo '<input type="submit" name="action" class="btn btn-default btn-xs btn-success" value="Start" / >
+                              <input type="submit" name="action" class="btn btn-default btn-xs btn-primary" value="Pause" / >
+                              <input type="submit" name="action" class="btn btn-default btn-xs btn-danger" value="Stop" disabled/ >
                               <input type="hidden" name="id" value="'.$row["ID"].'" />';
                             }
                             echo '  

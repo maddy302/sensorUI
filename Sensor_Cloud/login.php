@@ -59,7 +59,7 @@
     <!-- Custom Theme Style -->
     <link href="build/css/custom.min.css" rel="stylesheet">
   </head>
-
+<style>.login {background-color:#87cefa;}</style>
   <body class="login">
     <div>
       <a class="hiddenanchor" id="signin"></a>
@@ -96,8 +96,8 @@
                 <br />
 
                 <div>
-                  <h1><i class="fa fa-cloud"></i> Sensor Cloud!</h1>
-                  <p>©2016 All Rights Reserved. Sensor Cloud! is an IaaS. Privacy and Terms</p>
+                  <h1><i class="fa fa-cloud"></i> Sensor Cloud</h1>
+                  <p>©2018 All Rights Reserved. Sensor Cloud. Privacy and Terms</p>
                 </div>
               </div>
 

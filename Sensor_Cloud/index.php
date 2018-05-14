@@ -471,22 +471,7 @@
             </div>
             <!-- /sidebar menu -->
 
-            <!-- /menu footer buttons -->
-            <div class="sidebar-footer hidden-small">
-              <a data-toggle="tooltip" data-placement="top" title="Settings">
-                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-              </a>
-              <a data-toggle="tooltip" data-placement="top" title="FullScreen">
-                <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
-              </a>
-              <a data-toggle="tooltip" data-placement="top" title="Lock">
-                <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
-              </a>
-              <a data-toggle="tooltip" data-placement="top" title="Logout">
-                <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
-              </a>
-            </div>
-            <!-- /menu footer buttons -->
+           
           </div>
         </div>
 
@@ -532,7 +517,7 @@
               
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats">
-                  <div class="icon"><i class="fa fa-bullseye"></i></div>
+                  <div class="icon"><i class="fa fa-feed"></i></div>
                   <div class="count"><?php echo getCount("SENSOR_LIST", null, null); ?></div>
                   <h3>Total Sensors</h3>
 				  
@@ -541,7 +526,7 @@
               </div>
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats">
-                  <div class="icon"><i class="fa fa-empire"></i></div>
+                  <div class="icon"><i class="fa fa-crosshairs"></i></div>
                   <div class="count"><?php echo getCount("clusters", null, null); ?></div>
                   <h3>Total Clusters</h3>
                   <p>Number of clusters subscribed.</p>
@@ -557,7 +542,7 @@
               </div>
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats">
-                  <div class="icon"><i class="fa fa-users"></i></div>
+                  <div class="icon"><i class="fa fa-archive"></i></div>
                   <div class="count">$0.00</div>
                   <h3>Paid Bill</h3>
                   <p>Bill amount paid till date.</p>
@@ -568,72 +553,6 @@
 
 
           <div class="row">
-
-
-            <div class="col-md-4 col-sm-4 col-xs-12">
-              <div class="x_panel tile fixed_height_320">
-                <div class="x_title">
-                  <h2>Sensor Status</h2>
-                  
-                  <div class="clearfix"></div>
-                </div>
-                <div class="x_content">
-                  <h4>Sensors classified by status</h4>
-                  
-                  <div class="widget_summary" style="margin: 10px 0 0 0">
-                    <div class="w_left w_25">
-                      <span>Active</span>
-                    </div>
-                    <div class="w_center w_55">
-                      <div class="progress">
-                        <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo getCount("SENSOR_LIST", "status", "active")/getCount("SENSOR_LIST", null, null)*100; ?>%;">
-                          <span class="sr-only">60% Complete</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="w_right w_20">
-                      <span><?php echo getCount("SENSOR_LIST", "status", "active") ?></span>
-                    </div>
-                    <div class="clearfix"></div>
-                  </div>
-
-                  <div class="widget_summary">
-                    <div class="w_left w_25">
-                      <span>Paused</span>
-                    </div>
-                    <div class="w_center w_55">
-                      <div class="progress">
-                        <div class="progress-bar bg-blue" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo getCount("SENSOR_LIST", "status", "paused")/getCount("SENSOR_LIST", null, null)*100; ?>%;">
-                          <span class="sr-only">60% Complete</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="w_right w_20">
-                      <span><?php echo getCount("SENSOR_LIST", "status", "paused") ?></span>
-                    </div>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="widget_summary">
-                    <div class="w_left w_25">
-                      <span>Terminated</span>
-                    </div>
-                    <div class="w_center w_55">
-                      <div class="progress">
-                        <div class="progress-bar bg-red" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo getCount("SENSOR_LIST", "status", "terminated")/getCount("SENSOR_LIST", null, null)*100; ?>%;">
-                          <span class="sr-only">60% Complete</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="w_right w_20">
-                      <span><?php echo getCount("SENSOR_LIST", "status", "terminated") ?></span>
-                    </div>
-                    <div class="clearfix"></div>
-                  </div>
-                  
-
-                </div>
-              </div>
-            </div>
 
             <div class="col-md-4 col-sm-4 col-xs-12">
               <div class="x_panel tile fixed_height_320 overflow_hidden">
@@ -737,7 +656,70 @@
               </div>
             </div>
 
+<div class="col-md-4 col-sm-4 col-xs-12">
+              <div class="x_panel tile fixed_height_320">
+                <div class="x_title">
+                  <h2>Sensor Status</h2>
+                  
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                  <h4>Sensors classified by status</h4>
+                  
+                  <div class="widget_summary" style="margin: 10px 0 0 0">
+                    <div class="w_left w_25">
+                      <span>Active</span>
+                    </div>
+                    <div class="w_center w_55">
+                      <div class="progress">
+                        <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo getCount("SENSOR_LIST", "status", "active")/getCount("SENSOR_LIST", null, null)*100; ?>%;">
+                          <span class="sr-only">60% Complete</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="w_right w_20">
+                      <span><?php echo getCount("SENSOR_LIST", "status", "active") ?></span>
+                    </div>
+                    <div class="clearfix"></div>
+                  </div>
 
+                  <div class="widget_summary">
+                    <div class="w_left w_25">
+                      <span>Paused</span>
+                    </div>
+                    <div class="w_center w_55">
+                      <div class="progress">
+                        <div class="progress-bar bg-blue" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo getCount("SENSOR_LIST", "status", "paused")/getCount("SENSOR_LIST", null, null)*100; ?>%;">
+                          <span class="sr-only">60% Complete</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="w_right w_20">
+                      <span><?php echo getCount("SENSOR_LIST", "status", "paused") ?></span>
+                    </div>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="widget_summary">
+                    <div class="w_left w_25">
+                      <span>Terminated</span>
+                    </div>
+                    <div class="w_center w_55">
+                      <div class="progress">
+                        <div class="progress-bar bg-red" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo getCount("SENSOR_LIST", "status", "terminated")/getCount("SENSOR_LIST", null, null)*100; ?>%;">
+                          <span class="sr-only">60% Complete</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="w_right w_20">
+                      <span><?php echo getCount("SENSOR_LIST", "status", "terminated") ?></span>
+                    </div>
+                    <div class="clearfix"></div>
+                  </div>
+                  
+
+                </div>
+              </div>
+            </div>
             <div class="col-md-4 col-sm-4 col-xs-12">
               <div class="x_panel tile fixed_height_320">
                 <div class="x_title">
@@ -852,21 +834,21 @@
                             if ($row['status'] != "Terminated") {
                               echo '<form method="post" action="">';
                             if ($row["status"] == "Active") {
-                              echo '<input type="submit" name="action" class="btn btn-round btn-xs btn-success" value="Start" disabled/ >
-                              <input type="submit" name="action" class="btn btn-round btn-xs btn-primary" value="Pause" / >
-                              <input type="submit" name="action" class="btn btn-round btn-xs btn-danger" value="Stop" / >
+                              echo '<input type="submit" name="action" class="btn btn-default btn-xs btn-success" value="Start" disabled/ >
+                              <input type="submit" name="action" class="btn btn-default btn-xs btn-primary" value="Pause" / >
+                              <input type="submit" name="action" class="btn btn-default btn-xs btn-danger" value="Stop" / >
                               <input type="hidden" name="id" value="'.$row["id"].'" />';
                             }
                             if ($row["status"] == "Paused") {
-                              echo '<input type="submit" name="action" class="btn btn-round btn-xs btn-success" value="Start" / >
-                              <input type="submit" name="action" class="btn btn-round btn-xs btn-primary" value="Pause" disabled/ >
-                              <input type="submit" name="action" class="btn btn-round btn-xs btn-danger" value="Stop" / >
+                              echo '<input type="submit" name="action" class="btn btn-default btn-xs btn-success" value="Start" / >
+                              <input type="submit" name="action" class="btn btn-default btn-xs btn-primary" value="Pause" disabled/ >
+                              <input type="submit" name="action" class="btn btn-default btn-xs btn-danger" value="Stop" / >
                               <input type="hidden" name="id" value="'.$row["id"].'" />';
                             }
                             if ($row["status"] == "Terminated") {
-                              echo '<input type="submit" name="action" class="btn btn-round btn-xs btn-success" value="Start" / >
-                              <input type="submit" name="action" class="btn btn-round btn-xs btn-primary" value="Pause" / >
-                              <input type="submit" name="action" class="btn btn-round btn-xs btn-danger" value="Stop" disabled/ >
+                              echo '<input type="submit" name="action" class="btn btn-default btn-xs btn-success" value="Start" / >
+                              <input type="submit" name="action" class="btn btn-default btn-xs btn-primary" value="Pause" / >
+                              <input type="submit" name="action" class="btn btn-default btn-xs btn-danger" value="Stop" disabled/ >
                               <input type="hidden" name="id" value="'.$row["id"].'" />';
                             }
                             echo '  
@@ -938,21 +920,21 @@
                             if ($row['status'] != "Terminated") {
                               echo '<form method="post" action="">';
                             if ($row["status"] == "Active") {
-                              echo '<input type="submit" name="clusterAction" class="btn btn-round btn-xs btn-success" value="Start" disabled/ >
-                              <input type="submit" name="clusterAction" class="btn btn-round btn-xs btn-primary" value="Pause" / >
-                              <input type="submit" name="clusterAction" class="btn btn-round btn-xs btn-danger" value="Stop" / >
+                              echo '<input type="submit" name="clusterAction" class="btn btn-default btn-xs btn-success" value="Start" disabled/ >
+                              <input type="submit" name="clusterAction" class="btn btn-default btn-xs btn-primary" value="Pause" / >
+                              <input type="submit" name="clusterAction" class="btn btn-default btn-xs btn-danger" value="Stop" / >
                               <input type="hidden" name="id" value="'.$row["id"].'" />';
                             }
                             if ($row["status"] == "Paused") {
-                              echo '<input type="submit" name="clusterAction" class="btn btn-round btn-xs btn-success" value="Start" / >
-                              <input type="submit" name="clusterAction" class="btn btn-round btn-xs btn-primary" value="Pause" disabled/ >
-                              <input type="submit" name="clusterAction" class="btn btn-round btn-xs btn-danger" value="Stop" / >
+                              echo '<input type="submit" name="clusterAction" class="btn btn-default btn-xs btn-success" value="Start" / >
+                              <input type="submit" name="clusterAction" class="btn btn-default btn-xs btn-primary" value="Pause" disabled/ >
+                              <input type="submit" name="clusterAction" class="btn btn-default btn-xs btn-danger" value="Stop" / >
                               <input type="hidden" name="id" value="'.$row["id"].'" />';
                             }
                             if ($row["status"] == "Terminated") {
-                              echo '<input type="submit" name="clusterAction" class="btn btn-round btn-xs btn-success" value="Start" / >
-                              <input type="submit" name="clusterAction" class="btn btn-round btn-xs btn-primary" value="Pause" / >
-                              <input type="submit" name="clusterAction" class="btn btn-round btn-xs btn-danger" value="Stop" disabled/ >
+                              echo '<input type="submit" name="clusterAction" class="btn btn-default btn-xs btn-success" value="Start" / >
+                              <input type="submit" name="clusterAction" class="btn btn-default btn-xs btn-primary" value="Pause" / >
+                              <input type="submit" name="clusterAction" class="btn btn-default btn-xs btn-danger" value="Stop" disabled/ >
                               <input type="hidden" name="id" value="'.$row["id"].'" />';
                             }
                             echo '  
@@ -1056,7 +1038,7 @@
         };
 
         new Chart(document.getElementById("canvas1"), {
-          type: 'doughnut',
+          type: 'pie',
           tooltipFillColor: "rgba(51, 51, 51, 0.55)",
           data: {
             labels: [
