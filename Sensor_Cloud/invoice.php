@@ -41,7 +41,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Sensor Cloud! | Invoice</title>
+    <title>Sensor Cloud | Invoice</title>
 
     <!-- Bootstrap -->
     <link href="vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -58,9 +58,9 @@
     <div class="container body">
       <div class="main_container">
         <div class="col-md-3 left_col">
-          <div class="left_col scroll-view">
-            <div class="navbar nav_title" style="border: 0;">
-              <a href="index.php" class="site_title"><i class="fa fa-cloud"></i> <span>Sensor Cloud!</span></a>
+          <div class="nav-color left_col scroll-view">
+            <div class="nav-color navbar nav_title" style="border: 0;">
+              <a href="index.php" class="site_title"><i class="fa fa-mixcloud"></i> <span>Sensor Cloud</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -94,7 +94,8 @@
                       <li><a href="manage-sensor.php">Manage Sensors</a></li>
                       <!--<li><a href="virtualization.php">Sensor Virtualization</a></li>-->
 					  <li><a href="add-cluster.php">Add Cluster</a></li>
-					  <li><a href="visualization.php">Sensor Data Analytics</a></li>
+            <li><a href="visualization.php">Sensor Data Analytics</a></li>
+            <li><a href="viewdata.php">View Sensor Data</a></li>
                     </ul>
                   </li>
                   </ul>
@@ -165,7 +166,7 @@
                       <div class="row">
                         <div class="col-xs-12 invoice-header">
                           <h1>
-                                          <i class="fa fa-globe"></i> Invoice.
+                                          <i class="fa fa-pie-chart"></i> Invoice.
                                           <small class="pull-right">Date: <?php $d = new DateTime(); 
                                                             echo $d->format( 'd/m/Y' );?></small>
                                       </h1>
@@ -178,9 +179,9 @@
                           From
                           <address>
                                           <strong>Sensor Cloud, Inc.</strong>
-                                          <br>77 N Ave, #699
-                                          <br>New York, CA 94107
-                                          <br>Phone: +1 (111) 123-9876
+                                          <br>San Jose State Univ, #1
+                                          <br>San Jose, CA 94107
+                                          <br>Phone: +1 (408) xxx-xxxx
                                           <br>Email: billing@sensorcloud.com
                                       </address>
                         </div>
@@ -197,7 +198,7 @@
                         </div>
                         <!-- /.col -->
                         <div class="col-sm-4 invoice-col">
-                          <b>Invoice #007612</b>
+                          <b>Invoice #000213</b>
                           <br>
                           
                           <br>
@@ -255,12 +256,18 @@
                         <!-- accepted payments column -->
                         <div class="col-xs-6">
                           <p class="lead">Payment Methods:</p>
-                          <img src="images/visa.png" alt="Visa">
+                          <i class="fa fa-cc-amex"></i> 
+                          <i class="fa fa-cc-mastercard"></i> 
+                          <i class="fa fa-paypal"></i> 
+                          <i class="fa fa-cc-visa"></i> 
+                          <i class="fa fa-google-wallet"></i> 
+                          <i class="fa fa-bitcoin"></i> 
+                          <!--<img src="images/visa.png" alt="Visa">
                           <img src="images/mastercard.png" alt="Mastercard">
                           <img src="images/american-express.png" alt="American Express">
-                          <img src="images/paypal.png" alt="Paypal">
+                          <img src="images/paypal.png" alt="Paypal">-->
                           <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
-                            We accept the above payment methods. For more information on billing mail us at billing@sensorcloud.com.
+                            We accept the above payment methods. For more information on billing mail us at invoice@sensorcloud.com
                           </p>
                         </div>
                         <!-- /.col -->

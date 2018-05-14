@@ -397,6 +397,10 @@
 
     <title>Sensor Cloud! | Dashboard</title>
 
+    <style>
+      
+    </style>
+
     <!-- Bootstrap -->
     <link href="vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -420,9 +424,9 @@
     <div class="container body">
       <div class="main_container">
         <div class="col-md-3 left_col">
-          <div class="left_col scroll-view">
-            <div class="navbar nav_title" style="border: 0;">
-              <a href="index.php" class="site_title"><i class="fa fa-cloud"></i> <span>Sensor Cloud!</span></a>
+          <div class="nav-color left_col scroll-view">
+            <div class="nav-color navbar nav_title" style="border: 0;">
+              <a href="index.php" class="site_title"><i class="fa fa-mixcloud"></i> <span>Sensor Cloud</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -450,13 +454,14 @@
                     
                   </li>
                   
-                  <li><a><i class="fa fa-desktop"></i> Manage Sensors <span class="fa fa-chevron-down"></span></a>
+                  <li><a class="nav-color"><i class="fa fa-desktop"></i> Manage Sensors <span class="fa fa-chevron-circle-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="add-sensor.php">Add Sensors</a></li>
                       <li><a href="manage-sensor.php">Manage Sensors</a></li>
                     <!--  <li><a href="virtualization.php">Sensor Virtualization</a></li>-->
 					<li><a href="add-cluster.php">Add Cluster</a></li>
-					   <li><a href="visualization.php">Sensor Data Analytics</a></li>
+             <li><a href="visualization.php">Sensor Data Analytics</a></li>
+             <li><a href="viewdata.php">View Sensor Data</a></li>
                     </ul>
                   </li>
                   <!--<li><a><i class="fa fa-table"></i> Manage Clusters <span class="fa fa-chevron-down"></span></a>
@@ -514,7 +519,14 @@
         <div class="right_col" role="main">
           <div class="">
             <div class="row top_tiles">
-              
+            <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="tile-stats">
+                  <div class="icon"><i class="fa fa-first-order"></i></div>
+                  <div class="count"><?php echo getCount("clusters", null, null); ?></div>
+                  <h3>Total Clusters</h3>
+                  <p>Number of clusters subscribed.</p>
+                </div>
+              </div>
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats">
                   <div class="icon"><i class="fa fa-feed"></i></div>
@@ -524,14 +536,7 @@
                   <p>Number of sensors subscribed.</p>
                 </div>
               </div>
-              <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <div class="tile-stats">
-                  <div class="icon"><i class="fa fa-crosshairs"></i></div>
-                  <div class="count"><?php echo getCount("clusters", null, null); ?></div>
-                  <h3>Total Clusters</h3>
-                  <p>Number of clusters subscribed.</p>
-                </div>
-              </div>
+              
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats">
                   <div class="icon"><i class="fa fa-money"></i></div>

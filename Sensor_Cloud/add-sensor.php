@@ -45,6 +45,26 @@
       } else {
          
       }
+      if($result){
+        $temp;
+        $pres;
+        $buoy;
+        $salinity;
+        $cond;
+        for($i=0;$i<10;$i++){
+        $buoy = rand(1,15);
+        $pres = rand(1,30);
+        $temp = rand(30,90);
+        $salinity = rand(1,10);
+        $cond = rand(1,5);
+        $ins_sample_data = "insert into SENSOR_DATA (LATITUDE, LONGITUDE, SENSOR_ID
+        ,BUOY,PRESSURE,TEMPERATURE_C,SALINITY,CONDUCTIVITY) 
+        VALUES ('$latitude','$longitude','$name',$buoy,$pres,$temp,$salinity,$cond)";
+        $sample_data_result = mysqli_query($db,$ins_sample_data);
+      }
+      }else{
+
+      }
    }
 ?>
 <!DOCTYPE html>
@@ -88,9 +108,9 @@
     <div class="container body">
       <div class="main_container">
         <div class="col-md-3 left_col">
-          <div class="left_col scroll-view">
-            <div class="navbar nav_title" style="border: 0;">
-              <a href="index.php" class="site_title"><i class="fa fa-cloud"></i> <span>Sensor Cloud!</span></a>
+          <div class="nav-color left_col scroll-view">
+            <div class="nav-color navbar nav_title" style="border: 0;">
+              <a href="index.php" class="site_title"><i class="fa fa-mixcloud"></i> <span>Sensor Cloud</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -123,7 +143,8 @@
                       <li><a href="add-sensor.php">Add Sensors</a></li>
                       <li><a href="manage-sensor.php">Manage Sensors</a></li>
                       <li><a href="add-cluster.php">Add Cluster</a></li>
-					            <li><a href="visualization.php">Sensor Data Analytics</a></li>
+                      <li><a href="visualization.php">Sensor Data Analytics</a></li>
+                      <li><a href="viewdata.php">View Sensor Data</a></li>
                     </ul>
                   </li>
                   </ul>
@@ -249,7 +270,7 @@
                       <label class="control-label col-md-3 col-sm-3 col-xs-12">IP Address <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" id="latitude" name="latitude" required="required" class="form-control col-md-7 col-xs-12">
+                          <input type="text" id="ip" name="ip" required="required" class="form-control col-md-7 col-xs-12">
                         </div>
                       </div>
 					  <?php if(!empty($cluster_list)){?>

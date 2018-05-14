@@ -27,10 +27,12 @@
 
       date_default_timezone_set("America/Los_Angeles");
       $currentDate = date("Y-m-d H:i:s");
-
+      if(empty($from) || empty($to)){
+        $data_q = "select * from SENSOR_DATA WHERE SENSOR_ID='$sensorid' LIMIT 100 ";
+      }else{
 	     $data_q = "select * from SENSOR_DATA WHERE SENSOR_ID='$sensorid' and
        time_recorded between '$from' and '$to' LIMIT 100 ";
-
+      }
 
       //$sql = "INSERT INTO `SENSOR_LIST` ( `OWNER`, `SENSOR_ID`, `TYPE`, `LATITUDE`, `LONGITUDE`, `STATUS`,`CLUSTER_ID`) VALUES ( '$user_id','$name', '$type', '$latitude', '$longitude', 'Active','$cluster_for_db')";
       $result_data = mysqli_query($db,$data_q);
@@ -80,10 +82,10 @@
   <body class="nav-md">
     <div class="container body">
       <div class="main_container">
-        <div class="col-md-3 left_col">
-          <div class="left_col scroll-view">
-            <div class="navbar nav_title" style="border: 0;">
-              <a href="index.php" class="site_title"><span>Sensor Cloud</span></a>
+        <div class="nav-color col-md-3 left_col">
+          <div class="nav-color left_col scroll-view">
+            <div class="nav-color navbar nav_title" style="border: 0;">
+              <a href="index.php" class="site_title"><i class="fa fa-mixcloud"></i><span>Sensor Cloud</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -116,7 +118,8 @@
                       <li><a href="add-sensor.php">Add Sensors</a></li>
                       <li><a href="manage-sensor.php">Manage Sensors</a></li>
                       <li><a href="add-cluster.php">Add Cluster</a></li>
-					  <li><a href="visualization.php">Sensor Visualization</a></li>
+            <li><a href="visualization.php">Sensor Data Analytics</a></li>
+            <li><a href="viewdata.php">View Sensor Data</a></li>
                     </ul>
                   </li>
                   </ul>
@@ -212,7 +215,7 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="latitude">From <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="date" id="from" name="from" required="required" class="form-control col-md-7 col-xs-12">
+                          <input type="date" id="from" name="from"  class="form-control col-md-7 col-xs-12">
                         </div>
                       </div>
                       <div class="form-group">
@@ -220,7 +223,7 @@
                         </label>
 
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="date" id="to" name="to" required="required" class="form-control col-md-7 col-xs-12">
+                          <input type="date" id="to" name="to" class="form-control col-md-7 col-xs-12">
 
                         </div>
                       </div>

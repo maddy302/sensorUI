@@ -560,7 +560,7 @@ body .container.body .right_col {
 
 body {
 	color: #73879C;
-	background: #2A3F54;
+	background: #542a4b;
 	font-family: "Helvetica Neue", Roboto, Arial, "Droid Sans", sans-serif;
 	font-size: 13px;
 	font-weight: 400;
@@ -804,7 +804,7 @@ a:hover, a:focus {
 }
 
 .nav-md ul.nav.child_menu li:before {
-	background: #425668;
+	background: #542a4b;
 	bottom: auto;
 	content: "";
 	height: 8px;
@@ -818,7 +818,7 @@ a:hover, a:focus {
 }
 
 .nav-md ul.nav.child_menu li:after {
-	border-left: 1px solid #425668;
+	border-left: 1px solid #54284b;
 	bottom: 0;
 	content: "";
 	left: 27px;
@@ -863,7 +863,7 @@ a:hover, a:focus {
 
 .nav.side-menu>li.active>a {
 	text-shadow: rgba(0, 0, 0, 0.25) 0 -1px 0;
-	background: linear-gradient(#334556, #2C4257), #2A3F54;
+	 background: linear-gradient(#542a4b, #773a6a), #964a85; 
 	box-shadow: rgba(0, 0, 0, 0.25) 0 1px 0, inset rgba(255, 255, 255, 0.16)
 		0 1px 0
 }
@@ -3787,6 +3787,7 @@ ul.project_files li a i {
 	border-left-color: #ddd
 }
 
+
 .sideways.tabs-left {
 	left: -50px
 }
@@ -4806,3 +4807,10 @@ ul.notifications {
 	min-height: 300px;
 	border: 1px solid #e5e5e5
 }
+
+.nav-color{
+    background-color: #542a4b !important;
+  }
+  .nav.side-menu>li.active>a{
+    background-color: #542a4b !important;
+  }

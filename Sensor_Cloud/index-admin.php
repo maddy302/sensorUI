@@ -377,9 +377,9 @@
     <div class="container body">
       <div class="main_container">
         <div class="col-md-3 left_col">
-          <div class="left_col scroll-view">
-            <div class="navbar nav_title" style="border: 0;">
-              <a href="index-admin.php" class="site_title"><i class="fa fa-cloud"></i> <span>Sensor Cloud!</span></a>
+          <div class="nav-color left_col scroll-view">
+            <div class="nav-color navbar nav_title" style="border: 0;">
+              <a href="index-admin.php" class="site_title"><i class="fa fa-mixcloud"></i> <span>Sensor Cloud!</span></a>
             </div>
 
             <div class="clearfix"></div>

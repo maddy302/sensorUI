@@ -40,7 +40,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Sensor Cloud! | Login</title>
+    <title>Sensor Cloud | Login</title>
 
     <!-- Bootstrap -->
     <link href="vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -96,7 +96,7 @@
                 <br />
 
                 <div>
-                  <h1><i class="fa fa-cloud"></i> Sensor Cloud</h1>
+                  <h1><i class="fa fa-mixcloud"></i> Sensor Cloud</h1>
                   <p>©2018 All Rights Reserved. Sensor Cloud. Privacy and Terms</p>
                 </div>
               </div>

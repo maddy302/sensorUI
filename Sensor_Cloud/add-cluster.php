@@ -71,9 +71,9 @@
     <div class="container body">
       <div class="main_container">
         <div class="col-md-3 left_col">
-          <div class="left_col scroll-view">
-            <div class="navbar nav_title" style="border: 0;">
-              <a href="index.php" class="site_title"><i class="fa fa-cloud"></i> <span>Sensor Cloud!</span></a>
+          <div class="nav-color left_col scroll-view">
+            <div class="nav-color navbar nav_title" style="border: 0;">
+              <a href="index.php" class="site_title"><i class="fa fa-mixcloud"></i> <span>Sensor Cloud!</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -107,7 +107,8 @@
                       <li><a href="manage-sensor.php">Manage Sensors</a></li>
                       <!--<li><a href="virtualization.php">Sensor Virtualization</a></li>-->
 					  <li><a href="add-cluster.php">Add Cluster</a></li>
-					  <li><a href="visualization.php">Sensor Data Analytics</a></li>
+            <li><a href="visualization.php">Sensor Data Analytics</a></li>
+            <li><a href="viewdata.php">View Sensor Data</a></li>
                     </ul>
                   </li>
                   </ul>
