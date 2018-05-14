@@ -116,3 +116,5 @@ alter table clusters add primary key(id)
 alter table clusters modify column id int(11) auto_increment
 
 alter table billing_model modify column price decimal (8,4);
+
+alter table SENSOR_DATA ADD COLUMN FLAG VARCHAR(2) DEFAULT '0';
